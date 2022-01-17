@@ -4273,6 +4273,7 @@
             spaceBetween: 0,
             autoHeight: !0,
             speed: 800,
+            loop: !0,
             preloadImages: !1,
             lazy: !0,
             navigation: {
@@ -4524,15 +4525,22 @@
           .querySelector(".main-slider")
           .insertAdjacentHTML("beforeend", '<div class="main-bg"></div>');
       });
-    document.querySelectorAll(".slide-main-slider").forEach((e) => {
-      let t = e.querySelector(".button-video"),
-        s = e.querySelector(".slide-main-slider__block-video"),
-        n = e.querySelector(".slide-main-slider__video");
-      function i() {
-        n.paused ? n.play() : n.pause();
-      }
-      t.addEventListener("click", i), s.addEventListener("click", i);
-    }),
+    document
+      .querySelector(".body-main-slider__swiper")
+      .addEventListener("click", function (e) {
+        if (
+          e.target.closest(".button-video") ||
+          e.target.closest(".slide-main-slider__block-video")
+        ) {
+          let t = e.target
+            .closest(".slide-main-slider")
+            .querySelector(".slide-main-slider__video");
+          function s() {
+            t.paused ? t.play() : t.pause();
+          }
+          s();
+        }
+      }),
       (window.FLS = !0),
       (function (e) {
         let t = new Image();

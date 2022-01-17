@@ -905,6 +905,16 @@ body {
   height: 100%;
   object-fit: cover;
 }
+.preloader {
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background: url("../img/icons/loading.gif") 50%/40% no-repeat;
+}
 
 .block-header__top-title:not(:last-child) {
   margin: 0px 0px 14px 0px;
