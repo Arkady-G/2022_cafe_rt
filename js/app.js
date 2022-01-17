@@ -4524,6 +4524,11 @@
         document
           .querySelector(".main-slider")
           .insertAdjacentHTML("beforeend", '<div class="main-bg"></div>');
+        let t = document.querySelectorAll(".preloader");
+        t &&
+          t.forEach((e) => {
+            e.classList.remove("preloader");
+          });
       });
     document
       .querySelector(".body-main-slider__swiper")
