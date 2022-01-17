@@ -4523,10 +4523,14 @@
           .querySelector(".main-slider")
           .insertAdjacentHTML("beforeend", '<div class="main-bg"></div>');
       });
-    let he = document.querySelector(".button-video"),
-      fe = document.querySelector(".slide-main-slider__video");
-    he.addEventListener("click", function () {
-      fe.paused ? fe.play() : fe.pause();
+    document.querySelectorAll(".slide-main-slider").forEach((e) => {
+      let t = e.querySelector(".button-video"),
+        s = e.querySelector(".slide-main-slider__block-video"),
+        n = e.querySelector(".slide-main-slider__video");
+      function i() {
+        n.paused ? n.play() : n.pause();
+      }
+      t.addEventListener("click", i), s.addEventListener("click", i);
     }),
       (window.FLS = !0),
       (function (e) {
