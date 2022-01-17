@@ -4265,13 +4265,14 @@
         document.querySelector(".swiper") &&
           new oe(".swiper", {
             modules: [le, de],
+            effect: "fade",
+            fadeEffect: { crossFade: !0 },
             observer: !0,
             observeParents: !0,
             slidesPerView: 1,
-            spaceBetween: 10,
+            spaceBetween: 0,
             autoHeight: !0,
             speed: 800,
-            loop: !0,
             preloadImages: !1,
             lazy: !0,
             navigation: {
