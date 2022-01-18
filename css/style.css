@@ -1057,7 +1057,7 @@ body {
 }
 .main-banner__image-banner {
   position: relative;
-  padding: 0px 0px 36.5% 0px;
+  padding: 0px 0px 38.5% 0px;
 }
 .main-banner__image {
   position: absolute;
@@ -1101,7 +1101,8 @@ body {
 }
 @media (max-width: 47.99875em) {
   .main-banner__image-content {
-    width: 50%;
+    width: 70%;
+    padding: 0px 0px 45% 0px;
   }
 }
 .main-banner__description-image {
