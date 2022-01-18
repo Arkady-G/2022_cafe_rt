@@ -158,8 +158,8 @@
             },
             G = [d],
             W = [d, p],
-            B = [d, c, u],
-            j = function (e) {
+            j = [d, c, u],
+            B = function (e) {
               return !!e[h];
             },
             q = function (e) {
@@ -169,7 +169,7 @@
               return delete e[h];
             },
             R = function (e, t) {
-              if (!j(e)) {
+              if (!B(e)) {
                 var s = {};
                 t.forEach(function (t) {
                   s[t] = e.getAttribute(t);
@@ -178,7 +178,7 @@
               }
             },
             V = function (e, t) {
-              if (j(e)) {
+              if (B(e)) {
                 var s = q(e);
                 t.forEach(function (t) {
                   !(function (e, t, s) {
@@ -203,9 +203,9 @@
             U = {
               IMG: function (e, t) {
                 D(e, function (e) {
-                  R(e, B), Y(e, t);
+                  R(e, j), Y(e, t);
                 }),
-                  R(e, B),
+                  R(e, j),
                   Y(e, t);
               },
               IFRAME: function (e, t) {
@@ -301,7 +301,7 @@
               })(e),
                 ne(e, t, s),
                 (function (e) {
-                  j(e) || (e[h] = { backgroundImage: e.style.backgroundImage });
+                  B(e) || (e[h] = { backgroundImage: e.style.backgroundImage });
                 })(e),
                 (function (e, t, s) {
                   var n = E(e, t.data_bg),
@@ -345,9 +345,9 @@
             },
             oe = function (e) {
               D(e, function (e) {
-                V(e, B);
+                V(e, j);
               }),
-                V(e, B);
+                V(e, j);
             },
             le = {
               IMG: oe,
@@ -368,7 +368,7 @@
                 t
                   ? t(e)
                   : (function (e) {
-                      if (j(e)) {
+                      if (B(e)) {
                         var t = q(e);
                         e.style.backgroundImage = t.backgroundImage;
                       }
@@ -2225,7 +2225,7 @@
         );
       },
     };
-    function B({ swiper: e, runCallbacks: t, direction: s, step: n }) {
+    function j({ swiper: e, runCallbacks: t, direction: s, step: n }) {
       const { activeIndex: i, previousIndex: r } = e;
       let a = s;
       if (
@@ -2240,7 +2240,7 @@
             : e.emit(`slidePrevTransition${n}`);
       }
     }
-    const j = {
+    const B = {
       slideTo: function (e = 0, t = this.params.speed, s = !0, n, i) {
         if ("number" != typeof e && "string" != typeof e)
           throw new Error(
@@ -3297,7 +3297,7 @@
               { params: n } = s;
             n.cssMode ||
               (n.autoHeight && s.updateAutoHeight(),
-              B({ swiper: s, runCallbacks: e, direction: t, step: "Start" }));
+              j({ swiper: s, runCallbacks: e, direction: t, step: "Start" }));
           },
           transitionEnd: function (e = !0, t) {
             const s = this,
@@ -3305,10 +3305,10 @@
             (s.animating = !1),
               n.cssMode ||
                 (s.setTransition(0),
-                B({ swiper: s, runCallbacks: e, direction: t, step: "End" }));
+                j({ swiper: s, runCallbacks: e, direction: t, step: "End" }));
           },
         },
-        slide: j,
+        slide: B,
         loop: q,
         grabCursor: {
           setGrabCursor: function (e) {
@@ -4523,7 +4523,19 @@
       window.addEventListener("load", function (e) {
         document
           .querySelector(".main-slider")
-          .insertAdjacentHTML("beforeend", '<div class="main-bg"></div>');
+          .insertAdjacentHTML("beforeend", '<div class="main-bg"></div>'),
+          document
+            .querySelector(".main-banner__image-banner")
+            .insertAdjacentHTML(
+              "afterbegin",
+              '<img src="img/mainpage-banner/image_05.jpg" alt="Image" class="main-banner__image">'
+            ),
+          document
+            .querySelector(".main-banner__top-text")
+            .insertAdjacentHTML(
+              "afterend",
+              '<div class="main-banner__main-banner-bg"></div>'
+            );
         let t = document.querySelectorAll(".preloader");
         t &&
           t.forEach((e) => {
