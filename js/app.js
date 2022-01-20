@@ -4604,19 +4604,18 @@
             spaceBetween: 30,
             autoHeight: !0,
             speed: 800,
-            loop: !0,
             preloadImages: !1,
             lazy: !0,
             pagination: { el: ".slider-special-menu__control", clickable: !0 },
             on: {
               init: function () {
-                document
-                  .querySelectorAll(
-                    ".slider-special-menu__control .swiper-pagination-bullet"
-                  )
-                  .forEach((e, t) => {
-                    0 == t && ((t = "breakfast"), (e.innerHTML = `${t}`));
-                  });
+                const e = document.querySelectorAll(
+                  ".slider-special-menu__control .swiper-pagination-bullet"
+                );
+                let t = ["Закуски", "Завтраки", "Дессерты", "Напитки"];
+                e.forEach((e, s) => {
+                  e.innerHTML = `${t[s]}`;
+                });
               },
             },
           });
