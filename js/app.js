@@ -4586,7 +4586,6 @@
             spaceBetween: 0,
             autoHeight: !0,
             speed: 800,
-            loop: !0,
             preloadImages: !1,
             lazy: !0,
             navigation: {
@@ -4604,6 +4603,7 @@
             spaceBetween: 30,
             autoHeight: !0,
             speed: 800,
+            loop: !0,
             preloadImages: !1,
             lazy: !0,
             pagination: { el: ".slider-special-menu__control", clickable: !0 },
