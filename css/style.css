@@ -1277,6 +1277,7 @@ body {
 }
 .main-banner__image-banner {
   position: relative;
+  z-index: 2;
   padding: 0px 0px 38.5% 0px;
 }
 .main-banner__image {
