@@ -176,7 +176,7 @@ body {
   left: 0px;
   width: 100%;
   height: 100%;
-  background: url("../img/bg/bg_top.svg") 90% 0/43% no-repeat, url("../img/bg/bg_second.svg") 3% 600px/27.5% no-repeat;
+  background: url("../img/bg/bg_top.svg") 90% 0/43% no-repeat, url("../img/bg/bg_second.svg") 3% 500px/20% no-repeat;
 }
 @media (max-width: 29.99875em) {
   .main-bg {
@@ -1771,6 +1771,19 @@ body {
   margin: 0px 0px 60px 0px;
 }
 .new-dishes {
+  position: relative;
+  z-index: 2;
+}
+.new-dishes__bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: url("../img/bg/bg_slider.svg") no-repeat;
+}
+
+.new-dishes-slider {
   position: relative;
   z-index: 2;
 }
