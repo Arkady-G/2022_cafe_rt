@@ -159,17 +159,17 @@
             N = [d],
             B = [d, p],
             q = [d, c, u],
-            W = function (e) {
+            j = function (e) {
               return !!e[h];
             },
-            j = function (e) {
+            W = function (e) {
               return e[h];
             },
             H = function (e) {
               return delete e[h];
             },
             V = function (e, t) {
-              if (!W(e)) {
+              if (!j(e)) {
                 var s = {};
                 t.forEach(function (t) {
                   s[t] = e.getAttribute(t);
@@ -178,8 +178,8 @@
               }
             },
             R = function (e, t) {
-              if (W(e)) {
-                var s = j(e);
+              if (j(e)) {
+                var s = W(e);
                 t.forEach(function (t) {
                   !(function (e, t, s) {
                     s ? e.setAttribute(t, s) : e.removeAttribute(t);
@@ -301,7 +301,7 @@
               })(e),
                 ne(e, t, s),
                 (function (e) {
-                  W(e) || (e[h] = { backgroundImage: e.style.backgroundImage });
+                  j(e) || (e[h] = { backgroundImage: e.style.backgroundImage });
                 })(e),
                 (function (e, t, s) {
                   var n = y(e, t.data_bg),
@@ -368,8 +368,8 @@
                 t
                   ? t(e)
                   : (function (e) {
-                      if (W(e)) {
-                        var t = j(e);
+                      if (j(e)) {
+                        var t = W(e);
                         e.style.backgroundImage = t.backgroundImage;
                       }
                     })(e);
@@ -2240,7 +2240,7 @@
             : e.emit(`slidePrevTransition${n}`);
       }
     }
-    const W = {
+    const j = {
       slideTo: function (e = 0, t = this.params.speed, s = !0, n, i) {
         if ("number" != typeof e && "string" != typeof e)
           throw new Error(
@@ -2506,7 +2506,7 @@
         } else e.slideTo(r);
       },
     };
-    const j = {
+    const W = {
       loopCreate: function () {
         const e = this,
           t = h(),
@@ -3308,8 +3308,8 @@
                 q({ swiper: s, runCallbacks: e, direction: t, step: "End" }));
           },
         },
-        slide: W,
-        loop: j,
+        slide: j,
+        loop: W,
         grabCursor: {
           setGrabCursor: function (e) {
             const t = this;
@@ -4912,6 +4912,12 @@
             .insertAdjacentHTML(
               "afterbegin",
               '<div class="main-banner__main-banner-bg"></div><img src="img/mainpage-banner/image_05.jpg" alt="Image" class="main-banner__image">'
+            ),
+          document
+            .querySelector(".main-about__slider-about")
+            .insertAdjacentHTML(
+              "afterbegin",
+              '<div class="main-about__bg-image"></div>'
             ),
           document
             .querySelector(".new-dishes")
