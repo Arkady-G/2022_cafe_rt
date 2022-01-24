@@ -138,10 +138,10 @@
                 s && s.unobserve(e);
               }
             },
-            O = function (e, t) {
+            I = function (e, t) {
               e && (e.loadingCount += t);
             },
-            I = function (e, t) {
+            O = function (e, t) {
               e && (e.toLoadCount = t);
             },
             z = function (e) {
@@ -168,7 +168,7 @@
             H = function (e) {
               return delete e[h];
             },
-            R = function (e, t) {
+            V = function (e, t) {
               if (!W(e)) {
                 var s = {};
                 t.forEach(function (t) {
@@ -177,7 +177,7 @@
                   (e[h] = s);
               }
             },
-            V = function (e, t) {
+            R = function (e, t) {
               if (W(e)) {
                 var s = j(e);
                 t.forEach(function (t) {
@@ -190,7 +190,7 @@
             F = function (e, t, s) {
               M(e, t.class_loading),
                 E(e, f),
-                s && (O(s, 1), L(t.callback_loading, e, s));
+                s && (I(s, 1), L(t.callback_loading, e, s));
             },
             X = function (e, t, s) {
               s && e.setAttribute(t, s);
@@ -203,19 +203,19 @@
             U = {
               IMG: function (e, t) {
                 D(e, function (e) {
-                  R(e, q), Y(e, t);
+                  V(e, q), Y(e, t);
                 }),
-                  R(e, q),
+                  V(e, q),
                   Y(e, t);
               },
               IFRAME: function (e, t) {
-                R(e, N), X(e, d, y(e, t.data_src));
+                V(e, N), X(e, d, y(e, t.data_src));
               },
               VIDEO: function (e, t) {
                 G(e, function (e) {
-                  R(e, N), X(e, d, y(e, t.data_src));
+                  V(e, N), X(e, d, y(e, t.data_src));
                 }),
-                  R(e, B),
+                  V(e, B),
                   X(e, p, y(e, t.data_poster)),
                   X(e, d, y(e, t.data_src)),
                   e.load();
@@ -255,7 +255,7 @@
               !(function (e) {
                 delete e.llTempImage;
               })(e),
-                O(s, -1),
+                I(s, -1),
                 (function (e) {
                   e && (e.toLoadCount -= 1);
                 })(s),
@@ -345,20 +345,20 @@
             },
             le = function (e) {
               D(e, function (e) {
-                V(e, q);
+                R(e, q);
               }),
-                V(e, q);
+                R(e, q);
             },
             oe = {
               IMG: le,
               IFRAME: function (e) {
-                V(e, N);
+                R(e, N);
               },
               VIDEO: function (e) {
                 G(e, function (e) {
-                  V(e, N);
+                  R(e, N);
                 }),
-                  V(e, B),
+                  R(e, B),
                   e.load();
               },
             },
@@ -427,7 +427,7 @@
                             })(e),
                             le(e),
                             $(e, s.class_loading),
-                            O(n, -1),
+                            I(n, -1),
                             T(e),
                             L(s.callback_cancel, e, t, n));
                         })(e, t, s, n),
@@ -491,7 +491,7 @@
                   i,
                   r = this._settings,
                   a = ge(e, r);
-                I(this, a.length),
+                O(this, a.length),
                   !s && n
                     ? ue(r)
                       ? (function (e, t, s) {
@@ -507,7 +507,7 @@
                                   E(e, b);
                               })(e, t, s);
                           }),
-                            I(s, 0);
+                            O(s, 0);
                         })(a, r, this)
                       : ((i = a),
                         (function (e) {
@@ -1452,8 +1452,8 @@
         };
       c();
     }
-    let A, P, O;
-    function I() {
+    let A, P, I;
+    function O() {
       return (
         A ||
           (A = (function () {
@@ -1489,7 +1489,7 @@
       return (
         P ||
           (P = (function ({ userAgent: e } = {}) {
-            const t = I(),
+            const t = O(),
               s = m(),
               n = s.navigator.platform,
               i = e || s.navigator.userAgent,
@@ -1533,8 +1533,8 @@
     }
     function D() {
       return (
-        O ||
-          (O = (function () {
+        I ||
+          (I = (function () {
             const e = m();
             return {
               isSafari: (function () {
@@ -1550,7 +1550,7 @@
               ),
             };
           })()),
-        O
+        I
       );
     }
     const G = {
@@ -2674,7 +2674,7 @@
       }
       t.emit("touchStart", o);
     }
-    function R(e) {
+    function V(e) {
       const t = h(),
         s = this,
         n = s.touchEventsData,
@@ -2838,7 +2838,7 @@
         s.updateProgress(n.currentTranslate),
         s.setTranslate(n.currentTranslate));
     }
-    function V(e) {
+    function R(e) {
       const t = this,
         s = t.touchEventsData,
         {
@@ -3037,8 +3037,8 @@
             t = h(),
             { params: s, support: n } = e;
           (e.onTouchStart = H.bind(e)),
-            (e.onTouchMove = R.bind(e)),
-            (e.onTouchEnd = V.bind(e)),
+            (e.onTouchMove = V.bind(e)),
+            (e.onTouchEnd = R.bind(e)),
             s.cssMode && (e.onScroll = Y.bind(e)),
             (e.onClick = X.bind(e)),
             n.touch && !U && (t.addEventListener("touchstart", Q), (U = !0)),
@@ -3426,7 +3426,7 @@
         }
         const n = this;
         (n.__swiper__ = !0),
-          (n.support = I()),
+          (n.support = O()),
           (n.device = z({ userAgent: s.userAgent })),
           (n.browser = D()),
           (n.eventsListeners = {}),
@@ -4592,6 +4592,24 @@
             navigation: {
               nextEl: ".body-main-slider__buttons .main-buttons__button_next",
               prevEl: ".body-main-slider__buttons .main-buttons__button_prev",
+            },
+            on: {},
+          }),
+        document.querySelector(".slider-about__slider") &&
+          new le(".slider-about__slider", {
+            modules: [de, pe],
+            observer: !0,
+            observeParents: !0,
+            slidesPerView: 1,
+            spaceBetween: 20,
+            autoHeight: !0,
+            speed: 800,
+            loop: !0,
+            preloadImages: !1,
+            lazy: !0,
+            navigation: {
+              nextEl: ".slider-about__buttons .circle-buttons__button_next",
+              prevEl: ".slider-about__buttons .circle-buttons__button_prev",
             },
             on: {},
           }),
