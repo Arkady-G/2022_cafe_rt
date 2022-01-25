@@ -187,17 +187,26 @@ body {
 .block-header {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: minmax(20px, 50px) minmax(20px, 250px) minmax(50px, 150px);
-  flex-direction: column;
+  grid-template-rows: auto;
+}
+.block-header_main {
+  grid-template-rows: minmax(20px, 50px) minmax(20px, 220px) minmax(50px, 130px);
 }
 @media (max-width: 1149.98px) {
-  .block-header {
+  .block-header_main {
     grid-template-rows: minmax(20px, 50px) minmax(20px, 120px) 1fr;
   }
 }
 @media (max-width: 47.99875em) {
-  .block-header {
+  .block-header_main {
+    grid-template-columns: 100%;
     grid-template-rows: minmax(20px, 50px) minmax(20px, 70px) 1fr;
+  }
+}
+@media (max-width: 47.99875em) {
+  .block-header_left_center {
+    grid-template-columns: 100%;
+    grid-template-rows: minmax(30px, 40px) minmax(20px, 50px);
   }
 }
 .block-header__top-title {
@@ -236,12 +245,36 @@ body {
     letter-spacing: 0.125rem;
   }
 }
+@media (min-width: 75em) {
+  .block-header__top-title:not(:last-child) {
+    margin-bottom: 1.25rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 75em) {
+  .block-header__top-title:not(:last-child) {
+    margin-bottom: clamp( 0.9375rem , 0.8238636364rem  +  0.5681818182vw , 1.25rem );
+  }
+}
+@media (max-width: 20em) {
+  .block-header__top-title:not(:last-child) {
+    margin-bottom: 0.9375rem;
+  }
+}
 .block-header__top-title_left {
   text-align: left;
+}
+.block-header__top-title_left-center {
+  text-align: left;
+}
+@media (max-width: 47.99875em) {
+  .block-header__top-title_left-center {
+    text-align: center;
+  }
 }
 .block-header__title {
   font-family: "Raleway";
   font-weight: 600;
+  line-height: 129%;
   text-align: center;
   color: #534931;
 }
@@ -260,11 +293,34 @@ body {
     font-size: 1.375rem;
   }
 }
+@media (min-width: 75em) {
+  .block-header__title {
+    margin-bottom: 1.5625rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 75em) {
+  .block-header__title {
+    margin-bottom: clamp( 1.25rem , 1.1363636364rem  +  0.5681818182vw , 1.5625rem );
+  }
+}
+@media (max-width: 20em) {
+  .block-header__title {
+    margin-bottom: 1.25rem;
+  }
+}
 .block-header__title_left {
   text-align: left;
 }
 @media (max-width: 47.99875em) {
   .block-header__title_center {
+    text-align: center;
+  }
+}
+.block-header__title_left-center {
+  text-align: left;
+}
+@media (max-width: 47.99875em) {
+  .block-header__title_left-center {
     text-align: center;
   }
 }
@@ -1917,9 +1973,6 @@ body {
     align-items: flex-start;
   }
 }
-.new-dishes-slider__item-slide {
-  display: flex;
-}
 .new-dishes-slider__buttons {
   position: absolute;
   top: 100%;
@@ -1957,6 +2010,7 @@ body {
 }
 
 .item-slide {
+  display: flex;
   position: relative;
   height: 100%;
   width: 100%;
@@ -1971,6 +2025,9 @@ body {
   background: rgba(0, 0, 0, 0.55);
   transition: all 0.3s ease;
 }
+.item-slide__block-header {
+  flex: 0 0 100%;
+}
 @media (min-width: 75em) {
   .item-slide__block-header {
     padding-top: 6.25rem;
@@ -1978,12 +2035,12 @@ body {
 }
 @media (min-width: 20em) and (max-width: 75em) {
   .item-slide__block-header {
-    padding-top: clamp( 1.875rem , 0.2840909091rem  +  7.9545454545vw , 6.25rem );
+    padding-top: clamp( 2.5rem , 1.1363636364rem  +  6.8181818182vw , 6.25rem );
   }
 }
 @media (max-width: 20em) {
   .item-slide__block-header {
-    padding-top: 1.875rem;
+    padding-top: 2.5rem;
   }
 }
 @media (min-width: 75em) {
@@ -1993,12 +2050,12 @@ body {
 }
 @media (min-width: 20em) and (max-width: 75em) {
   .item-slide__block-header {
-    padding-left: clamp( 1.875rem , 1.1931818182rem  +  3.4090909091vw , 3.75rem );
+    padding-left: clamp( 1.25rem , 0.3409090909rem  +  4.5454545455vw , 3.75rem );
   }
 }
 @media (max-width: 20em) {
   .item-slide__block-header {
-    padding-left: 1.875rem;
+    padding-left: 1.25rem;
   }
 }
 @media (min-width: 75em) {
@@ -2008,12 +2065,12 @@ body {
 }
 @media (min-width: 20em) and (max-width: 75em) {
   .item-slide__block-header {
-    padding-right: clamp( 1.875rem , 0.2840909091rem  +  7.9545454545vw , 6.25rem );
+    padding-right: clamp( 1.25rem , -0.5681818182rem  +  9.0909090909vw , 6.25rem );
   }
 }
 @media (max-width: 20em) {
   .item-slide__block-header {
-    padding-right: 1.875rem;
+    padding-right: 1.25rem;
   }
 }
 @media (min-width: 75em) {
@@ -2273,6 +2330,10 @@ body {
     padding-left: 1.5625rem;
   }
 }
+.slider-about__block-header {
+  position: relative;
+  z-index: 2;
+}
 .slider-about__slider {
   display: grid;
   grid-template-columns: 1fr;
@@ -2294,16 +2355,19 @@ body {
   }
 }
 .slider-about__slide {
+  position: relative;
   display: flex;
   flex-direction: column;
   row-gap: 25px;
 }
 .slider-about__text {
+  position: relative;
   flex-grow: 1;
   flex-shrink: 1;
   overflow-y: auto;
   font-weight: 500;
   line-height: 1.5625;
+  font-style: italic;
 }
 @media (min-width: 75em) {
   .slider-about__text {
@@ -2320,12 +2384,67 @@ body {
     flex: 12.5rem;
   }
 }
+@media (min-width: 75em) {
+  .slider-about__text {
+    padding-left: 5rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 75em) {
+  .slider-about__text {
+    padding-left: clamp( 3.75rem , 3.2954545455rem  +  2.2727272727vw , 5rem );
+  }
+}
+@media (max-width: 20em) {
+  .slider-about__text {
+    padding-left: 3.75rem;
+  }
+}
+@media (max-width: 29.99875em) {
+  .slider-about__text {
+    padding-left: 0;
+  }
+}
+.slider-about__text::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../img/bg/bg_quote.svg") 0 0/3.125em no-repeat;
+}
+@media (max-width: 29.99875em) {
+  .slider-about__text::before {
+    display: none;
+  }
+}
 .slider-about__author {
   font-family: "Raleway";
   font-weight: 600;
   font-size: 1.125rem;
   line-height: 156%;
   color: #534931;
+  font-style: italic;
+}
+@media (min-width: 75em) {
+  .slider-about__author {
+    padding-left: 5rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 75em) {
+  .slider-about__author {
+    padding-left: clamp( 3.75rem , 3.2954545455rem  +  2.2727272727vw , 5rem );
+  }
+}
+@media (max-width: 20em) {
+  .slider-about__author {
+    padding-left: 3.75rem;
+  }
+}
+@media (max-width: 29.99875em) {
+  .slider-about__author {
+    padding-left: 0;
+  }
 }
 .slider-about__buttons {
   position: relative;
