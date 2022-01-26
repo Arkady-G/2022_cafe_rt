@@ -509,13 +509,21 @@ body {
 }
 
 .header {
-  position: fixed;
+  position: absolute;
   width: 100%;
   top: 0;
   left: 0;
   z-index: 50;
   padding: 10px 0px;
   background-color: rgba(247, 247, 247, 0.94);
+}
+.header._header-scroll {
+  top: -200px;
+  position: fixed;
+}
+.header._header-show {
+  transition: all 0.3s ease 0s;
+  top: 0px;
 }
 .header__container {
   position: relative;
@@ -574,6 +582,21 @@ body {
 @media (max-width: 61.99875em) and (max-width: 47.99875em) {
   .header__body {
     column-gap: 1.25rem;
+  }
+}
+@media (min-width: 75em) {
+  ._header-scroll .header__body {
+    min-height: 6.875rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 75em) {
+  ._header-scroll .header__body {
+    min-height: clamp( 3.125rem , 1.7613636364rem  +  6.8181818182vw , 6.875rem );
+  }
+}
+@media (max-width: 20em) {
+  ._header-scroll .header__body {
+    min-height: 3.125rem;
   }
 }
 .logo {
@@ -1078,6 +1101,21 @@ body {
 @media (max-width: 47.99875em) and (max-width: 20em) {
   .mainpage {
     padding-top: 5rem;
+  }
+}
+@media (min-width: 75em) {
+  .mainpage__main-reservation {
+    margin-bottom: 6.25rem;
+  }
+}
+@media (min-width: 20em) and (max-width: 75em) {
+  .mainpage__main-reservation {
+    margin-bottom: clamp( 1.25rem , -0.5681818182rem  +  9.0909090909vw , 6.25rem );
+  }
+}
+@media (max-width: 20em) {
+  .mainpage__main-reservation {
+    margin-bottom: 1.25rem;
   }
 }
 .main-slider__container {
@@ -2519,6 +2557,10 @@ body {
   content: "\e902";
 }
 
+.blog-main {
+  position: relative;
+  z-index: 2;
+}
 @media (min-width: 120em) {
   .blog-main {
     padding-top: 8.125rem;
@@ -2670,6 +2712,10 @@ body {
   color: #534931;
 }
 
+.contact-main {
+  position: relative;
+  z-index: 2;
+}
 .contact-main__body {
   display: flex;
   flex-direction: column;
@@ -2789,13 +2835,67 @@ body {
   z-index: 2;
 }
 .gallery__body {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: minmax(1fr, 318px);
+}
+@media (max-width: 61.99875em) {
+  .gallery__body {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: minmax(1fr, 318px);
+  }
+}
+@media (max-width: 47.99875em) {
+  .gallery__body {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: minmax(1fr, 318px);
+  }
+}
+@media (max-width: 29.99875em) {
+  .gallery__body {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: minmax(1fr, 318px);
+  }
 }
 .gallery__image-block {
   position: relative;
-  padding: 0px 0px 17% 0px;
-  flex: 1 1 15%;
+  padding: 0px 0px 100% 0px;
   cursor: pointer;
+}
+.gallery__image-block::before {
+  position: absolute;
+  z-index: 2;
+  content: "";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease;
+}
+.gallery__image-block::after {
+  position: absolute;
+  z-index: 2;
+  content: "";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transform: scale(0);
+  transition: all 0.3s ease;
+  background: url("../img/icons/eye-solid.svg") center/13% no-repeat;
+}
+@media (any-hover: hover) {
+  .gallery__image-block:hover::before {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .gallery__image-block:hover::after {
+    opacity: 0.7;
+    transform: scale(1);
+  }
 }
 .gallery__image {
   position: absolute;

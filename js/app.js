@@ -166,10 +166,10 @@
             j = function (e) {
               return e[h];
             },
-            W = function (e) {
+            q = function (e) {
               return delete e[h];
             },
-            q = function (e, t) {
+            W = function (e, t) {
               if (!F(e)) {
                 var s = {};
                 t.forEach(function (t) {
@@ -204,19 +204,19 @@
             U = {
               IMG: function (e, t) {
                 D(e, function (e) {
-                  q(e, H), X(e, t);
+                  W(e, H), X(e, t);
                 }),
-                  q(e, H),
+                  W(e, H),
                   X(e, t);
               },
               IFRAME: function (e, t) {
-                q(e, B), Y(e, d, C(e, t.data_src));
+                W(e, B), Y(e, d, C(e, t.data_src));
               },
               VIDEO: function (e, t) {
                 G(e, function (e) {
-                  q(e, B), Y(e, d, C(e, t.data_src));
+                  W(e, B), Y(e, d, C(e, t.data_src));
                 }),
-                  q(e, N),
+                  W(e, N),
                   Y(e, p, C(e, t.data_poster)),
                   Y(e, d, C(e, t.data_src)),
                   e.load();
@@ -386,7 +386,7 @@
                     M(e, t.class_error));
                 })(e, t),
                 T(e),
-                W(e);
+                q(e);
             },
             ce = ["IMG", "IFRAME", "VIDEO"],
             ue = function (e) {
@@ -524,7 +524,7 @@
               destroy: function () {
                 this._observer && this._observer.disconnect(),
                   ge(this._settings).forEach(function (e) {
-                    W(e);
+                    q(e);
                   }),
                   delete this._observer,
                   delete this._settings,
@@ -2586,7 +2586,7 @@
           s.removeAttr("data-swiper-slide-index");
       },
     };
-    function W(e) {
+    function q(e) {
       const t = this,
         s = h(),
         i = m(),
@@ -2675,7 +2675,7 @@
       }
       t.emit("touchStart", l);
     }
-    function q(e) {
+    function W(e) {
       const t = h(),
         s = this,
         i = s.touchEventsData,
@@ -3037,8 +3037,8 @@
           const e = this,
             t = h(),
             { params: s, support: i } = e;
-          (e.onTouchStart = W.bind(e)),
-            (e.onTouchMove = q.bind(e)),
+          (e.onTouchStart = q.bind(e)),
+            (e.onTouchMove = W.bind(e)),
             (e.onTouchEnd = V.bind(e)),
             s.cssMode && (e.onScroll = X.bind(e)),
             (e.onClick = Y.bind(e)),
@@ -5434,8 +5434,8 @@
       He = "lgBeforeSlide",
       Fe = "lgAfterSlide",
       je = "lgPosterClick",
-      We = "lgDragStart",
-      qe = "lgDragMove",
+      qe = "lgDragStart",
+      We = "lgDragMove",
       Ve = "lgDragEnd",
       Re = "lgBeforeNextSlide",
       Ye = "lgBeforePrevSlide",
@@ -6584,7 +6584,7 @@
                       (e.outer.get().scrollLeft += 1),
                       (e.outer.get().scrollLeft -= 1),
                       e.outer.removeClass("lg-grab").addClass("lg-grabbing"),
-                      e.LGel.trigger(We))));
+                      e.LGel.trigger(qe))));
               }),
               ve(window).on("mousemove.lg.global" + this.lgId, function (r) {
                 i &&
@@ -6592,7 +6592,7 @@
                   ((n = !0),
                   (s = { pageX: r.pageX, pageY: r.pageY }),
                   e.touchMove(t, s),
-                  e.LGel.trigger(qe));
+                  e.LGel.trigger(We));
               }),
               ve(window).on("mouseup.lg.global" + this.lgId, function (r) {
                 if (e.lgOpened) {
@@ -7230,6 +7230,38 @@
             : document.querySelector(`.${t()}`) && (e = `.${t()}`),
             e && l(e, !0, 500, 20);
         }
+      })(),
+      (function () {
+        ge = !0;
+        const e = document.querySelector("header.header"),
+          t = e.hasAttribute("data-scroll-show"),
+          s = e.dataset.scrollShow ? e.dataset.scrollShow : 500,
+          i = e.dataset.scroll ? e.dataset.scroll : 1;
+        let n,
+          r = 0;
+        document.addEventListener("windowScroll", function (o) {
+          const a = window.scrollY;
+          clearTimeout(n),
+            a >= i
+              ? (!e.classList.contains("_header-scroll") &&
+                  e.classList.add("_header-scroll"),
+                t &&
+                  (a > r
+                    ? e.classList.contains("_header-show") &&
+                      e.classList.remove("_header-show")
+                    : !e.classList.contains("_header-show") &&
+                      e.classList.add("_header-show"),
+                  (n = setTimeout(() => {
+                    !e.classList.contains("_header-show") &&
+                      e.classList.add("_header-show");
+                  }, s))))
+              : (e.classList.contains("_header-scroll") &&
+                  e.classList.remove("_header-scroll"),
+                t &&
+                  e.classList.contains("_header-show") &&
+                  e.classList.remove("_header-show")),
+            (r = a <= 0 ? 0 : a);
+        });
       })();
   })();
 })();
