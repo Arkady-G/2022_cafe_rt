@@ -7235,32 +7235,26 @@
         ge = !0;
         const e = document.querySelector("header.header"),
           t = e.hasAttribute("data-scroll-show"),
-          s = e.dataset.scrollShow ? e.dataset.scrollShow : 500,
-          i = e.dataset.scroll ? e.dataset.scroll : 1;
-        let n,
-          r = 0;
-        document.addEventListener("windowScroll", function (o) {
-          const a = window.scrollY;
-          clearTimeout(n),
-            a >= i
+          s = e.dataset.scroll ? e.dataset.scroll : 1;
+        let i = 0;
+        document.addEventListener("windowScroll", function (n) {
+          const r = window.scrollY;
+          clearTimeout(undefined),
+            r >= s
               ? (!e.classList.contains("_header-scroll") &&
                   e.classList.add("_header-scroll"),
                 t &&
-                  (a > r
+                  (r > i
                     ? e.classList.contains("_header-show") &&
                       e.classList.remove("_header-show")
                     : !e.classList.contains("_header-show") &&
-                      e.classList.add("_header-show"),
-                  (n = setTimeout(() => {
-                    !e.classList.contains("_header-show") &&
-                      e.classList.add("_header-show");
-                  }, s))))
+                      e.classList.add("_header-show")))
               : (e.classList.contains("_header-scroll") &&
                   e.classList.remove("_header-scroll"),
                 t &&
                   e.classList.contains("_header-show") &&
                   e.classList.remove("_header-show")),
-            (r = a <= 0 ? 0 : a);
+            (i = r <= 0 ? 0 : r);
         });
       })();
   })();
