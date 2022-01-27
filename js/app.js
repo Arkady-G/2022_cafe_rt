@@ -7043,42 +7043,41 @@
       });
     new et("max").init(),
       window.addEventListener("load", function (e) {
-        document
-          .querySelector(".main-slider")
-          .insertAdjacentHTML("beforeend", '<div class="main-bg"></div>'),
-          document
-            .querySelector(".first-banner__background")
-            .insertAdjacentHTML(
-              "afterbegin",
-              '<div class="first-banner__bg-image"></div>'
-            ),
-          document
-            .querySelector(".main-banner__image-banner")
-            .insertAdjacentHTML(
-              "afterbegin",
-              '<div class="main-banner__main-banner-bg"></div><img src="img/mainpage-banner/image_05.jpg" alt="Image" class="main-banner__image">'
-            ),
-          document
-            .querySelector(".main-about__slider-about")
-            .insertAdjacentHTML(
-              "afterbegin",
-              '<div class="main-about__bg-image"></div>'
-            ),
-          document
-            .querySelector(".new-dishes")
-            .insertAdjacentHTML(
-              "beforeend",
-              '<div class="new-dishes__bg-image"></div>'
-            );
-        let t = document.querySelectorAll(".preloader");
-        t &&
-          t.forEach((e) => {
+        let t = document.querySelector(".main-slider");
+        t && t.insertAdjacentHTML("beforeend", '<div class="main-bg"></div>');
+        let s = document.querySelector(".first-banner__background");
+        s &&
+          s.insertAdjacentHTML(
+            "afterbegin",
+            '<div class="first-banner__bg-image"></div>'
+          );
+        let i = document.querySelector(".main-banner__image-banner");
+        i &&
+          i.insertAdjacentHTML(
+            "afterbegin",
+            '<div class="main-banner__main-banner-bg"></div><img src="img/mainpage-banner/image_05.jpg" alt="Image" class="main-banner__image">'
+          );
+        let n = document.querySelector(".main-about__slider-about");
+        n &&
+          n.insertAdjacentHTML(
+            "afterbegin",
+            '<div class="main-about__bg-image"></div>'
+          );
+        let r = document.querySelector(".new-dishes");
+        r &&
+          r.insertAdjacentHTML(
+            "beforeend",
+            '<div class="new-dishes__bg-image"></div>'
+          );
+        let o = document.querySelectorAll(".preloader");
+        o &&
+          o.forEach((e) => {
             e.classList.remove("preloader");
           });
       });
-    document
-      .querySelector(".body-main-slider__swiper")
-      .addEventListener("click", function (e) {
+    const tt = document.querySelector(".body-main-slider__swiper");
+    tt &&
+      tt.addEventListener("click", function (e) {
         if (
           e.target.closest(".button-video") ||
           e.target.closest(".slide-main-slider__block-video")
@@ -7092,20 +7091,20 @@
           s();
         }
       });
-    const tt = document.querySelector("._load-map"),
-      st = document.documentElement.clientHeight;
+    const st = document.querySelector("._load-map"),
+      it = document.documentElement.clientHeight;
     window.addEventListener("scroll", function () {
-      tt.classList.contains("_loaded") ||
+      st.classList.contains("_loaded") ||
         (function () {
-          const e = tt.getBoundingClientRect().top + pageYOffset;
-          if (pageYOffset > e - st) {
-            const e = tt.dataset.map;
+          const e = st.getBoundingClientRect().top + pageYOffset;
+          if (pageYOffset > e - it) {
+            const e = st.dataset.map;
             e &&
-              (tt.insertAdjacentHTML(
+              (st.insertAdjacentHTML(
                 "beforeend",
                 `<iframe src="${e}" width="100%" height="100%" frameborder="0"></iframe>`
               ),
-              tt.classList.add("_loaded"));
+              st.classList.add("_loaded"));
           }
         })();
     }),
