@@ -896,7 +896,6 @@ body {
 .footer__body {
   display: grid;
   grid-template-columns: 325px 1fr 1fr 1fr;
-  justify-content: center;
   align-items: baseline;
   font-weight: 500;
   line-height: 156%;
